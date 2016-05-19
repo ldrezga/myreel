@@ -1,0 +1,51 @@
+  <% if current_user %>
+    <div class="menu__wrapper">
+        <%= link_to "Home", user_profile_path, :class => "menu__links" %>
+        <%= link_to "Following", user_friend_path, :class => "menu__links" %>   
+        <%= link_to "My Movies", user_movies_path, :class => "menu__links" %>
+        <%= link_to "My Watchlist", user_watchlist_path, :class => "menu__links" %>
+        <%= link_to "Sign out", signout_path, id: "sign_out", :class => "menu__links" %>
+    </div>
+    <div class="recommenders__wrapper">
+        <%= link_to recommend_genre_path, :class => "recommenders__single-recommender" do %>
+            <div class="recommenders__single-recommender__image">
+                <%= image_tag('clapboard.png') %>
+            </div>
+            <div class="recommenders__single-recommender__info">
+                <p class="recommenders__single-recommender__type">Similar movies</p>
+                <p class="recommenders__single-recommender__expl">This will recommend you movies that you didn't watch based on your favourite Genres.</p>
+            </div>
+        <% end %>
+        <%= link_to recommend_influencer_path, :class => "recommenders__single-recommender" do %>
+            <div class="recommenders__single-recommender__image">
+                <%= image_tag('profile.png') %>
+            </div>
+            <div class="recommenders__single-recommender__info">
+                <p class="recommenders__single-recommender__type">Influencer movies</p>
+                <p class="recommenders__single-recommender__expl">We have movie influencers that love to watch movies. Find out what their best movies are</p>
+            </div>
+        <% end %>
+        <%= link_to recommend_friend_path, :class => "recommenders__single-recommender" do %>
+            <div class="recommenders__single-recommender__image">
+                <%= image_tag('heart.png') %>
+            </div>
+            <div class="recommenders__single-recommender__info">
+                <p class="recommenders__single-recommender__type">Friend movies</p>
+                <p class="recommenders__single-recommender__expl">Find new movies based on movies your friends loved. We'll recommend you only the best ones!</p>
+            </div>
+        <% end %>
+    </div>
+<% else %>
+    <div class="menu__wrapper sign-in">
+        <div class="animation__wrapper">
+            <%= inline_svg "sign-in.svg" %>
+        </div>
+        <a href="/auth/facebook" id="sign_in" class="menu__links animation">Sign in with Facebook</a>
+        <div class="logo__wrapper">
+            <%= inline_svg "myreel.svg" %>
+        </div>
+        <div class="home__text">
+            <p>Don't search for movies, let us find them for you.</p>
+        </div>
+    </div>
+  <% end %>

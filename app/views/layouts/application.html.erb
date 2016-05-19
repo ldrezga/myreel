@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <title>SocialNetworks</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+     <script>
+     $(document).ready(function() {
+       $.ajaxSetup({ cache: true });
+       $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+         FB.init({
+           appId: '1027104497355918',
+           version: 'v2.4' // or v2.0, v2.1, v2.2, v2.3
+         });     
+         $('#loginbutton,#feedbutton').removeAttr('disabled');
+         FB.getLoginStatus(updateStatusCallback);
+       });
+     });
+     </script>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

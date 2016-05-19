@@ -1,0 +1,134 @@
+.influencers__wrapper { 
+	margin: 0 auto;
+	width: 1080px;
+}
+
+.influencers__single-influencer__wrapper {
+	position: relative;
+	margin: 0 auto;
+	display: inline-block;
+
+	.influencers__single-influencer__add {
+		position: absolute;
+		top: 22px;
+		right: 10px;
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		background: image-url("add-to-friends.svg") no-repeat 8px 8px;
+		background-size: 22px 16px;
+		cursor: pointer;
+		z-index: 12;
+
+		&:hover{
+			background-image: image-url("add-to-friends-hover.svg");
+		}
+
+		&.added{
+			background-image: image-url("add-to-friends-added.svg");
+
+			&:hover{
+				background-image: image-url("add-to-friends-hover.svg");
+			}
+		}
+	}
+}
+
+.influencers__single-influencer {
+	padding: 35px 35px 25px 35px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	margin: 20px 10px;
+	display: inline-block;
+	width: 336px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 3px;
+	box-sizing: border-box;
+	box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+	background: #fff;
+	transition: all 0.15s ease;
+
+	&:hover {
+		border: 1px solid $color-main;
+		box-sizing: border-box;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		background: #fff;
+
+		.influencers__single-influencer__info {
+
+			.influencers__single-influencer__name {
+				&:before {
+  					visibility: visible;
+ 					-webkit-transform: scaleX(1);
+  					transform: scaleX(1);
+				}
+			}
+
+			.influencers__single-influencer__score {
+				transform: scale(1.05)
+			}
+		}
+	}
+
+	.influencers__single-influencer__image {
+		margin-bottom: 30px;
+
+		img {
+			display: block;
+			width: 150px;
+			border-radius: 100%;
+			margin: 0 auto;
+		}
+	}
+
+	.influencers__single-influencer__info {
+
+		.influencers__single-influencer__name {
+			position: relative;
+			display: inline-block;
+			margin:0 0 5px 0;
+			color: $color-main;
+			font-weight: $weight-semi-bold;
+
+			&:before {
+			  content: "";
+			  color: $color-main;
+			  position: absolute;
+			  width: 100%;
+			  height: 2px;
+			  bottom: 0;
+			  left: 0;
+			  background-color: $color-main;
+			  visibility: hidden;
+			  -webkit-transform: scaleX(0);
+			  transform: scaleX(0);
+			  -webkit-transition: all 0.3s ease-in-out 0s;
+			  transition: all 0.2s ease-in-out 0s;
+			}
+		}
+
+		.influencers__single-influencer__watched {
+			margin: 0 0 10px 0;
+			color: #999;
+			font-size: 10px;
+			text-transform: uppercase;
+
+			&.inf {
+				color: #777;
+				font-weight: $weight-bold;
+			}
+		}
+
+		.influencers__single-influencer__score {
+			padding: 5px 10px;
+			border: 2px solid #fff;
+			display: inline-block;
+			color: $color-main;
+			font-size: 32px;
+			margin: 6px 0 0 0;
+			font-weight: $weight-semi-bold;
+			transition: all 0.15s ease;
+		}
+	}
+}

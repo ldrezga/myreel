@@ -1,0 +1,17 @@
+@import "variables";
+@import "home";
+@import "sessions";
+@import "user";
+@import "movie";
+@import "influencer";
+@import "menu";
+@import "singlemovie";
+
+ body {
+ 	background: #f0f0f0;
+ 	font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+ }
+
+ .u-cf:before, .u-cf:after { content: " "; display: table; }
+ .u-cf:after { clear: both; }
+ .u-cf { *zoom: 1; }

@@ -1,0 +1,77 @@
+<% if current_user %>
+	<div class="menu__wrapper">
+	    <%= link_to "Home", user_profile_path, :class => "menu__links" %>
+	    <%= link_to "Following", user_friend_path, :class => "menu__links" %>	    
+	    <%= link_to "My Movies", user_movies_path, :class => "menu__links" %>
+	    <%= link_to "My Watchlist", user_watchlist_path, :class => "menu__links" %>
+	    <%= link_to "Sign out", signout_path, id: "sign_out", :class => "menu__links" %>
+	</div>
+	<div class="single-movie__wrapper">
+		<div class="single-movie__contents u-cf">
+			<% if !@movie.blank? %>
+				<div class="single-movie__contents__top">
+					<div class="single-movie__contents__image">
+						<% if @watched_slugs.include?(@movie.slug) %>	
+							<div class="single-movie__left__add--watched watched js-update-watched-single added" data-slug="<%= @movie.slug %>"></div>
+						<% else %>
+							<% if @watchlist_slugs.include?(@movie.slug) %>
+								<div class="single-movie__left__add--favs js-update-watchlist added" data-slug="<%= @movie.slug %>"></div>
+							<% else %>
+								<div class="single-movie__left__add--favs js-update-watchlist" data-slug="<%= @movie.slug %>"></div>
+							<% end %>
+							<div class="single-movie__left__add--watched js-update-watched-single" data-slug="<%= @movie.slug %>"></div>
+						<% end %>
+						<%= image_tag(@movie.image) %>
+					</div>
+					<div class="single-movie__contents__right">
+						<h2><%= @movie.title %></h2>
+						<% @movie.genre.each do |g| %>
+							<%= link_to g, recommend_subgenre_path(g), :class => "single-movie__genre", :target => "_blank" %>
+						<% end %>
+						<p class="single-movie__info"><span>Year &mdash;</span> <%= @movie.year %>.</p>
+						<p class="single-movie__info"><span>Runtime &mdash;</span> <%= @movie.runtime %></p>
+						<p class="single-movie__info"><span>Directed by &mdash;</span> <%= @movie.director %></p>
+						<p class="single-movie__info"><span>Actors &mdash;</span> <%= @movie.actors %></p>
+						<p class="single-movie__info plot"><span>Plot</span> <%= @movie.plot %></p>
+						<% if !@movie.youtubeID.blank? %>
+							<a href="http://www.youtube.com/embed/<%= @movie.youtubeID %>" target="_blank" class="single-movie__genre margined">Watch trailer</a>
+						<% end %>
+						<div class="single-movie__rating__wrapper">
+							<p class="single-movie__rating">IMDB &mdash; <span><%= @movie.imdbRating %></span></p>
+							<p class="single-movie__rating">TMDB &mdash; <span><%= @movie.tmdbvote_average %></span></p>
+							<p class="single-movie__rating">ROTTEN &mdash; <span><%= @movie.metascore %></span></p>
+							<p class="single-movie__rating">LIKES &mdash; <span><%= @movie.likes %></span></p>
+						</div>
+					</div>
+				</div>
+			<% else %>
+				<div class="single-movie__contents__top">
+					<div class="single-movie__contents__image">
+						<%= image_tag(@moviet.Poster) %>
+					</div>
+					<div class="single-movie__contents__right">
+						<h2><%= @moviet.Title %></h2>
+						<% genre = @moviet.Genre.split(",") %>
+						<% genre.map! {|item| item.strip} %>
+						<% genre.each do |g| %>
+							<%= link_to g, recommend_subgenre_path(g), :class => "single-movie__genre", :target => "_blank" %>
+						<% end %>
+						<p class="single-movie__info"><span>Year &mdash;</span> <%= @moviet.Year %>.</p>
+						<p class="single-movie__info"><span>Runtime &mdash;</span> <%= @moviet.Runtime %></p>
+						<p class="single-movie__info"><span>Directed by &mdash;</span> <%= @moviet.Director %></p>
+						<p class="single-movie__info"><span>Actors &mdash;</span> <%= @moviet.Actors %></p>
+						<p class="single-movie__info plot"><span>Plot</span> <%= @moviet.Plot %></p>
+						<% if !@moviet.YoutubeID.blank? %>
+							<a href="http://www.youtube.com/embed/<%= @moviet.YoutubeID %>" target="_blank" class="single-movie__genre margined">Watch trailer</a>
+						<% end %>
+						<div class="single-movie__rating__wrapper">
+							<p class="single-movie__rating">IMDB &mdash; <span><%= @moviet.imdbRating %></span></p>
+							<p class="single-movie__rating">TMDB &mdash; <span><%= @moviet.TMDBvote_average %></span></p>
+							<p class="single-movie__rating">ROTTEN &mdash; <span><%= @moviet.Metascore %></span></p>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>

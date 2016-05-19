@@ -1,0 +1,32 @@
+<% if current_user %>
+	<div class="menu__wrapper">
+	    <%= link_to "Home", user_profile_path, :class => "menu__links" %>
+	    <%= link_to "Following", user_friend_path, :class => "menu__links" %>	    
+	    <%= link_to "My Movies", user_movies_path, :class => "menu__links" %>
+	    <%= link_to "My Watchlist", user_watchlist_path, :class => "menu__links" %>
+	    <%= link_to "Sign out", signout_path, id: "sign_out", :class => "menu__links" %>
+	</div>
+	<div class="movies__single-movie__wrapper u-cf">
+		<% @movie_list.sort_by{|e| -e[:algorithm_score]}.each do |m|%>
+				<div class="movies__single-movie">
+					<div class="movies__single-movie__left" style='background: url(<%= m.image %>) center center no-repeat; background-size: cover;'>
+						<div class="movies__single-movie__left__add--favs js-update-watchlist added in-watchlist" data-slug="<%= m.slug %>"></div>
+						<div class="movies__single-movie__left__add--watched js-update-watched" data-slug="<%= m.slug %>"></div>
+					</div>
+					<div class="movies__single-movie__right">
+						<%= link_to "Find out more", single_movie_path(m.slug), :class => "movies__single-movie_link" %>
+						<% m.genre.each do |g| %>
+							<a href="" class="movies__single-movie__genre <%= g.downcase %>"><%= g %></a>
+						<% end %>
+						<p class="movies__single-movie__name"><%= m.name %></p>
+						<p class="movies__single-movie__plot"><%= m.plot.truncate(110) %></p>
+						<div class="movies__single-movie__rating__wrapper">
+							<p class="movies__single-movie__rating">IMDB &mdash; <span><%= m.imdbRating %></span></p>
+							<p class="movies__single-movie__rating">ROTTEN &mdash; <span><%= m.metascore %></span></p>
+							<p class="movies__single-movie__rating">LIKES &mdash; <span><%= m.likes %></span></p>
+						</div>
+					</div>
+				</div>
+		<% end %>
+	</div>
+<% end %>

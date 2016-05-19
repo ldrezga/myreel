@@ -1,0 +1,27 @@
+<% if current_user %>
+	<div class="menu__wrapper">
+	    <%= link_to "Home", user_profile_path, :class => "menu__links" %>
+	    <%= link_to "Following", user_friend_path, :class => "menu__links" %>	    
+	    <%= link_to "My Movies", user_movies_path, :class => "menu__links" %>
+	    <%= link_to "My Watchlist", user_watchlist_path, :class => "menu__links" %>
+	    <%= link_to "Sign out", signout_path, id: "sign_out", :class => "menu__links" %>
+	</div>
+	<div class="influencers__wrapper">
+		<% @influencers.each do |i| %>
+			<div class="influencers__single-influencer__wrapper">
+				<div class="influencers__single-influencer__add js-add-to-friends<% if @friend_id.include? i.uid.to_i %> added <% end %>" data-slug="<%= i.uid %>" data-name="<%= i.name %>"></div>
+				<a href="<%= recommend_single_influencer_path(i.uid) %>" class="influencers__single-influencer">
+					<div class="influencers__single-influencer__image">
+						<img src="http://graph.facebook.com/<%= i.uid %>/picture?width=300&height=300" alt="">
+					</div>
+					<div class="influencers__single-influencer__info">
+						<p class="influencers__single-influencer__name"><%= i.name %></p>
+						<p class="influencers__single-influencer__watched"> <% if i.gender == "male" %>He<% else %>She<% end %> watched <%= i.influencer_score %> movies.</p>
+						<p class="influencers__single-influencer__watched inf">Influencer score</p>
+						<p class="influencers__single-influencer__score"><%= i.get_influencer_score(@current_user) %></p>
+					</div>
+				</a>
+			</div>
+		<% end %>
+	</div>
+<% end %>

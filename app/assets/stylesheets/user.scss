@@ -1,0 +1,158 @@
+.user_wrapper {
+	text-align: center;
+	width: 1080px;
+	margin: 30px auto;
+
+	.user {
+		display: inline-block;
+		margin: 30px auto 0 auto;
+		padding: 20px;
+		border: 1px solid rgba(0,0,0,0.1);
+		border-radius: 3px;
+		box-sizing: border-box;
+		box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+		background: #fff;
+
+		.image {
+			margin-right: 15px;
+			float: left;
+
+			img {
+				display: block;
+				width: 40px;
+				border-radius: 100%;
+				margin: 0 auto;
+			}
+
+		}
+
+		.user-info {
+			vertical-align: top;
+			width: 150px;
+			margin: 0 auto;
+
+			.username {
+				margin: 0;
+				font-size: 14px;
+				color: #333;
+				font-weight: $weight-bold;
+			}
+
+			.user-additional-info {
+				display: inline-block;
+				margin: 0;
+
+				p {
+					margin: 0;
+					text-transform: uppercase;
+					font-size: 10px;
+					color: #777;
+				}
+			}
+
+
+		}
+	}
+}
+
+.recommenders__wrapper { 
+	margin: 0 auto;
+	width: 1080px;
+}
+
+.recommenders__single-recommender {
+	padding: 35px 35px 25px 35px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	margin: 20px 10px;
+	display: inline-block;
+	width: 336px;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 3px;
+	box-sizing: border-box;
+	box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+	background: #fff;
+	transition: all 0.15s ease;
+
+	&:hover {
+		border: 1px solid $color-main;
+		box-sizing: border-box;
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+		background: #fff;
+
+		.recommenders__single-recommender__info {
+
+			.recommenders__single-recommender__type {
+				background: #5ACEFF;
+				top: 3px;
+				-webkit-box-shadow: 0px 0px 0px 0px #2A8BB3;
+				-moz-box-shadow: 0px 0px 0px 0px #2A8BB3;
+				box-shadow: 0px 0px 0px 0px #2A8BB3;
+			}
+
+			.recommenders__single-recommender__score {
+				transform: scale(1.05)
+			}
+		}
+	}
+
+	.recommenders__single-recommender__image {
+		margin-bottom: 40px;
+
+		img {
+			display: block;
+			width: 150px;
+			border-radius: 100%;
+			margin: 0 auto;
+		}
+	}
+
+	.recommenders__single-recommender__info {
+
+		.recommenders__single-recommender__type {
+			position: relative;
+			top: 0px;
+		    display: inline-block;
+		    margin: 0 5px;
+			background: #02B4FF;
+		    padding: 10px 15px;
+		    text-transform: uppercase;
+		    text-decoration: none;
+		    font-weight: 700;
+		    border-radius: 2px;
+		    font-size: 12px;
+		    color: #fff;
+		    transition: all 0.05s ease;
+		    -webkit-box-shadow: 0px 3px 0px 0px #2A8BB3;
+		    -moz-box-shadow: 0px 3px 0px 0px #2A8BB3;
+		    box-shadow: 0px 3px 0px 0px #2A8BB3;
+		    transition: all 0.18s ease;
+		}
+
+		.recommenders__single-recommender__expl {
+			margin: 30px 0 10px 0;
+			color: #999;
+			font-size: 10px;
+			text-transform: uppercase;
+			
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
