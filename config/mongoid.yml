@@ -133,3 +133,15 @@ test:
         read:
           mode: primary
         max_pool_size: 1
+production:
+    clients:
+      default:
+        database: heroku_zzrb4j9z
+        hosts:
+          - ds011412.mlab.com:11412/heroku_zzrb4j9z
+        options:
+          read:
+            mode: primary
+          user: brazga
+          password: password123
+          max_pool_size: 1
